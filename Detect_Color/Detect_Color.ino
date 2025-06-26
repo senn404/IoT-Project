@@ -44,14 +44,8 @@ void loop() {
   float g = gRaw / sum * 255.0;
   float b = bRaw / sum * 255.0;
 
-  // In mã RGB
-  Serial.print("R: "); Serial.print((int)r);
-  Serial.print(" G: "); Serial.print((int)g);
-  Serial.print(" B: "); Serial.println((int)b);
-
   String detected = classifyColorRGB(r, g, b);
-  Serial.println("Detected Color: " + detected);
-  Serial.println("--------------------------");
+  Serial.println(detected);
 
   delay(3000);
 }

@@ -9,6 +9,6 @@ void setup() {
 void loop() {
   if (Serial2.available()) {
     String msg = Serial2.readStringUntil('\n');
-    Serial.println("From UNO: " + msg);  // In ra cổng USB
+    
   }
 }
