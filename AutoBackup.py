@@ -26,7 +26,7 @@ def auto_commit_push():
             branch = branch_result.stdout.strip()
             
             subprocess.run(['git', 'push', 'origin', branch], check=True)
-            print(f"✅ Đã commit và push lên branch {branch} với message: '{commit_message}'")
+            print(f"Back'")
         
         except subprocess.CalledProcessError as e:
             print("❌ Error: ", e)
