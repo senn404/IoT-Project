@@ -32,6 +32,7 @@ def auto_commit_push():
         
         except subprocess.CalledProcessError as e:
             print("❌ Error: ", e)
+            return;
 
 while True:
     auto_commit_push();
