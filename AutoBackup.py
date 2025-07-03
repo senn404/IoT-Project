@@ -29,7 +29,7 @@ def auto_commit_push():
             print(f"✅ Đã commit và push lên branch {branch} với message: '{commit_message}'")
         
         except subprocess.CalledProcessError as e:
-            print("❌ Lỗi khi chạy git command:", e)
+            print("❌ Error: ", e)
     else:
         print("✅ Không có thay đổi nào để commit.")
 
