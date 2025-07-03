@@ -3,14 +3,17 @@
 
 #define RXD2 16  // U2-RX
 #define TXD2 17  // U2-TX
+#define Buzzer 26
 
 LiquidCrystal_I2C lcd(0x27, 16, 2);
 
-int redCount = 0, blueCount = 0, pinkCount = 0;
+int redCount = 0, blueCount = 0, pinkCount = 0, eCount = 0;
 
 void setup() {
   Serial.begin(115200); // debug
   Serial2.begin(9600, SERIAL_8N1, RXD2, TXD2); // UART2
+
+  pinMode(Buzzer, OUTPUT);
 
   lcd.init();
   lcd.backlight();
@@ -19,7 +22,7 @@ void setup() {
   lcd.setCursor(0, 0); lcd.print("R:");
   lcd.setCursor(5, 0); lcd.print("B:");
   lcd.setCursor(10, 0); lcd.print("P:");
-  lcd.setCursor(0, 1); lcd.print("Total:");
+  lcd.setCursor(0, 1); lcd.print("E:");
 }
 
 void loop() {
@@ -40,6 +43,13 @@ void updateColorCount(String color) {
   if (color == "RED") redCount++;
   else if (color == "BLUE") blueCount++;
   else if (color == "PINK") pinkCount++;
+  else if (color == "UNKNOWN") {
+    eCount++;
+     digitalWrite(Buzzer, HIGH); // bật buzzer
+    delay(1000);                // chờ 1 giây
+    digitalWrite(Buzzer, LOW);  // tắt buzzer
+    delay(1000);                // chờ 1 giây
+  }
   // nếu là UNKNOWN thì bỏ qua
 }
 
@@ -58,5 +68,5 @@ void updateLCD() {
 
   // Xóa và cập nhật dòng 2
   lcd.setCursor(7, 1); lcd.print("     "); // clear Total
-  lcd.setCursor(7, 1); lcd.print(total);
+  lcd.setCursor(7, 1); lcd.print(eCount);
 }
