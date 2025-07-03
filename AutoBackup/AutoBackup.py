@@ -17,7 +17,7 @@ def auto_commit_push():
         commit_message = f"Auto commit at {now}"
         
         try:
-            subprocess.run(['git', 'add', '.'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
+            subprocess.run(['git', 'add', '-A'], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
             subprocess.run(['git', 'commit', '-m', commit_message], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
             
             # Lấy tên branch hiện tại
