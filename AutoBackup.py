@@ -23,11 +23,11 @@ def auto_commit_push():
             # Lấy tên branch hiện tại
             branch_result = subprocess.run(
                 ['git', 'branch', '--show-current'],
-                stdout=subprocess.PIPE, text=True, check=True
+                stdout=subprocess.PIPE, stderr=subprocess.DEVNULL,text=True, check=True
             )
             branch = branch_result.stdout.strip()
             
-            subprocess.run(['git', 'push', 'origin', branch], check=True)
+            subprocess.run(['git', 'push', 'origin', branch], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
             print(f"Backup successful!'")
         
         except subprocess.CalledProcessError as e:
