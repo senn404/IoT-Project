@@ -33,5 +33,5 @@ def auto_commit_push():
     else:
         print("✅ Không có thay đổi nào để commit.")
 
-if __name__ == "__main__":
-    auto_commit_push()
+while True:
+    auto_commit_push();
