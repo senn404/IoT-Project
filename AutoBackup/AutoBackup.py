@@ -28,7 +28,7 @@ def auto_commit_push():
             branch = branch_result.stdout.strip()
             
             subprocess.run(['git', 'push', 'origin', branch], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, check=True)
-            print(f"Backup successful!'")
+            print(f"Oke👌")
         
         except subprocess.CalledProcessError as e:
             print("❌ Error: ", e)
